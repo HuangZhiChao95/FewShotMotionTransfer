@@ -1,0 +1,6 @@
+dataset/*
+checkpoint/*
+data/*
+video/
+.idea/
+

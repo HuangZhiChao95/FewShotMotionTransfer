@@ -1,0 +1,40 @@
+dataroot: ./data-train/
+checkpoint_path: checkpoint
+name: selfatt
+
+batchsize: 8
+epochs: 10
+lr: 0.0002
+lr_T: 0.0002
+lr_milestone:
+  - 5
+
+phase: pretrain_texture
+pretrain_name:
+
+resize: 256
+texture_size: 128
+hflip: true
+URange: 256
+VRange: 256
+
+display_freq: 250
+
+body_nc: 26
+
+G:
+  nf: 32                      # number of base filters in the generator
+  n_res_blks: 3               # number of residual blocks in content encoder/decoder
+  latent_dim: 64              # dimension of the latent code for the class model
+  n_downs_content: 4          # number of downsampling layers in content encoder
+  n_downs_class: 4            # number of downsampling layers in class model encoder
+  input_dim: 26
+
+Texture_G:
+  nf: 64                      # number of base filters in the generator
+  n_res_blks: 6               # number of residual blocks in content encoder/decoder
+  n_downs: 3          # number of downsampling layers in content encoder
+  input_dim: 72
+  output_dim: 72
+
+num_texture: 8

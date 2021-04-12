@@ -1,0 +1,56 @@
+target_root: ./data-test/       # target root
+source_root: ./data-test/       # source root
+output_name:
+output_folder: video
+checkpoint_path: checkpoint
+name: selfatt                           # name of checkpoint
+finetune_sample: 20
+
+batchsize: 6
+epochs: 1
+finetune_coor_step: 60                  # steps of finetuning geometry generator
+lr: 0.0002                              # learning rate of finetuning geometry generator
+lr_T: 0.005                             # learning rate of finetuning embedding of texture
+lr_milestone:                           # steps of learning rate decay
+  - 150
+
+phase: finetune
+background: background.png
+pretrain_name: latest_train
+
+resize: 256                             # size of image/pose
+texture_size: 128                       # size of texture
+hflip: false
+URange: 256
+VRange: 256
+
+display: false
+display_freq: 250
+
+body_nc: 26
+
+G:
+  nf: 32                                # number of base filters in the generator
+  n_res_blks: 5                         # number of residual blocks in content encoder/decoder
+  nf_mlp: 256                           # number of base filters in MLP module
+  latent_dim: 64                        # dimension of the latent code for the class model
+  n_mlp_blks: 3                         # number of mlp blocks
+  n_downs_content: 4                    # number of downsampling layers in content encoder
+  n_downs_class: 4                      # number of downsampling layers in class model encoder
+  input_dim: 26
+
+Texture_G:
+  nf: 64                                # number of base filters in the generator
+  n_res_blks: 6                         # number of residual blocks in content encoder/decoder
+  n_downs: 3                            # number of downsampling layers in content encoder
+  input_dim: 72
+  output_dim: 72
+
+num_texture: 8
+
+#Constraint
+l_texture: 0.0
+l_coordinate: 5.0
+l_mask: 0.5
+l_vgg: 0.5
+l_background: 0.4
