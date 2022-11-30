@@ -28,8 +28,10 @@ test_folders = folders[args.n_train:]
 
 for folder in train_folders:
     basename = os.path.basename(folder)
-    os.system("ln -sf {} {}".format(osp(root, folder), osp(args.train, folder)))
+#     os.system("ln -sf {} {}".format(osp(root, folder), osp(args.train, folder)))
+    os.system("ln -sf {} {}".format(osp(root, basename), osp(args.train, basename)))
 
 for folder in test_folders:
     basename = os.path.basename(folder)
-    os.system("ln -sf {} {}".format(osp(root, folder), osp(args.test, folder)))
+#     os.system("ln -sf {} {}".format(osp(root, folder), osp(args.test, folder)))
+    os.system("ln -sf {} {}".format(osp(root, basename), osp(args.test, basename)))
